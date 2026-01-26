@@ -8,14 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("todoList") private var TodoList : [ToDoItem]=[
+        ToDoItem(title:"Test")
+    ]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack{
+            VStack {
+                List($TodoList) {$todo in
+                    Text(todo.title)
+                        .strikethrough0(todo.isCompleted)
+
+                    Button("Done!"){
+                        todo.isCompleted = !todo
+                    }
+                }
+            
+            }
+            .padding()
+            .navigationTitle("Todo List")
         }
-        .padding()
     }
 }
 
