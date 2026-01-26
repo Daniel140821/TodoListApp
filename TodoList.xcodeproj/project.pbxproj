@@ -12,37 +12,37 @@
 			containerPortal = 655851682F25D6BA00F47C63 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6558516F2F25D6BA00F47C63;
-			remoteInfo = forGithub;
+			remoteInfo = TodoList;
 		};
 		655851882F25D6BC00F47C63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 655851682F25D6BA00F47C63 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6558516F2F25D6BA00F47C63;
-			remoteInfo = forGithub;
+			remoteInfo = TodoList;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		655851702F25D6BA00F47C63 /* forGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = forGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6558517D2F25D6BC00F47C63 /* forGithubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = forGithubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		655851872F25D6BC00F47C63 /* forGithubUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = forGithubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		655851702F25D6BA00F47C63 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6558517D2F25D6BC00F47C63 /* TodoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		655851872F25D6BC00F47C63 /* TodoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		655851722F25D6BA00F47C63 /* forGithub */ = {
+		655851722F25D6BA00F47C63 /* TodoList */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = forGithub;
+			path = TodoList;
 			sourceTree = "<group>";
 		};
-		655851802F25D6BC00F47C63 /* forGithubTests */ = {
+		655851802F25D6BC00F47C63 /* TodoListTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = forGithubTests;
+			path = TodoListTests;
 			sourceTree = "<group>";
 		};
-		6558518A2F25D6BC00F47C63 /* forGithubUITests */ = {
+		6558518A2F25D6BC00F47C63 /* TodoListUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = forGithubUITests;
+			path = TodoListUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +75,9 @@
 		655851672F25D6BA00F47C63 = {
 			isa = PBXGroup;
 			children = (
-				655851722F25D6BA00F47C63 /* forGithub */,
-				655851802F25D6BC00F47C63 /* forGithubTests */,
-				6558518A2F25D6BC00F47C63 /* forGithubUITests */,
+				655851722F25D6BA00F47C63 /* TodoList */,
+				655851802F25D6BC00F47C63 /* TodoListTests */,
+				6558518A2F25D6BC00F47C63 /* TodoListUITests */,
 				655851712F25D6BA00F47C63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 		655851712F25D6BA00F47C63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				655851702F25D6BA00F47C63 /* forGithub.app */,
-				6558517D2F25D6BC00F47C63 /* forGithubTests.xctest */,
-				655851872F25D6BC00F47C63 /* forGithubUITests.xctest */,
+				655851702F25D6BA00F47C63 /* TodoList.app */,
+				6558517D2F25D6BC00F47C63 /* TodoListTests.xctest */,
+				655851872F25D6BC00F47C63 /* TodoListUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6558516F2F25D6BA00F47C63 /* forGithub */ = {
+		6558516F2F25D6BA00F47C63 /* TodoList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 655851912F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "forGithub" */;
+			buildConfigurationList = 655851912F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "TodoList" */;
 			buildPhases = (
 				6558516C2F25D6BA00F47C63 /* Sources */,
 				6558516D2F25D6BA00F47C63 /* Frameworks */,
@@ -108,18 +108,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				655851722F25D6BA00F47C63 /* forGithub */,
+				655851722F25D6BA00F47C63 /* TodoList */,
 			);
-			name = forGithub;
+			name = TodoList;
 			packageProductDependencies = (
 			);
-			productName = forGithub;
-			productReference = 655851702F25D6BA00F47C63 /* forGithub.app */;
+			productName = TodoList;
+			productReference = 655851702F25D6BA00F47C63 /* TodoList.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6558517C2F25D6BC00F47C63 /* forGithubTests */ = {
+		6558517C2F25D6BC00F47C63 /* TodoListTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 655851942F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "forGithubTests" */;
+			buildConfigurationList = 655851942F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "TodoListTests" */;
 			buildPhases = (
 				655851792F25D6BC00F47C63 /* Sources */,
 				6558517A2F25D6BC00F47C63 /* Frameworks */,
@@ -131,18 +131,18 @@
 				6558517F2F25D6BC00F47C63 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				655851802F25D6BC00F47C63 /* forGithubTests */,
+				655851802F25D6BC00F47C63 /* TodoListTests */,
 			);
-			name = forGithubTests;
+			name = TodoListTests;
 			packageProductDependencies = (
 			);
-			productName = forGithubTests;
-			productReference = 6558517D2F25D6BC00F47C63 /* forGithubTests.xctest */;
+			productName = TodoListTests;
+			productReference = 6558517D2F25D6BC00F47C63 /* TodoListTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		655851862F25D6BC00F47C63 /* forGithubUITests */ = {
+		655851862F25D6BC00F47C63 /* TodoListUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 655851972F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "forGithubUITests" */;
+			buildConfigurationList = 655851972F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "TodoListUITests" */;
 			buildPhases = (
 				655851832F25D6BC00F47C63 /* Sources */,
 				655851842F25D6BC00F47C63 /* Frameworks */,
@@ -154,13 +154,13 @@
 				655851892F25D6BC00F47C63 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				6558518A2F25D6BC00F47C63 /* forGithubUITests */,
+				6558518A2F25D6BC00F47C63 /* TodoListUITests */,
 			);
-			name = forGithubUITests;
+			name = TodoListUITests;
 			packageProductDependencies = (
 			);
-			productName = forGithubUITests;
-			productReference = 655851872F25D6BC00F47C63 /* forGithubUITests.xctest */;
+			productName = TodoListUITests;
+			productReference = 655851872F25D6BC00F47C63 /* TodoListUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6558516B2F25D6BA00F47C63 /* Build configuration list for PBXProject "forGithub" */;
+			buildConfigurationList = 6558516B2F25D6BA00F47C63 /* Build configuration list for PBXProject "TodoList" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6558516F2F25D6BA00F47C63 /* forGithub */,
-				6558517C2F25D6BC00F47C63 /* forGithubTests */,
-				655851862F25D6BC00F47C63 /* forGithubUITests */,
+				6558516F2F25D6BA00F47C63 /* TodoList */,
+				6558517C2F25D6BC00F47C63 /* TodoListTests */,
+				655851862F25D6BC00F47C63 /* TodoListUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		6558517F2F25D6BC00F47C63 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6558516F2F25D6BA00F47C63 /* forGithub */;
+			target = 6558516F2F25D6BA00F47C63 /* TodoList */;
 			targetProxy = 6558517E2F25D6BC00F47C63 /* PBXContainerItemProxy */;
 		};
 		655851892F25D6BC00F47C63 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6558516F2F25D6BA00F47C63 /* forGithub */;
+			target = 6558516F2F25D6BA00F47C63 /* TodoList */;
 			targetProxy = 655851882F25D6BC00F47C63 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -410,7 +410,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.forGithub;
+				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.todolistapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -442,7 +442,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.forGithub;
+				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.todolistapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -464,7 +464,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.forGithubTests;
+				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.todolistapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -472,7 +472,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/forGithub.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/forGithub";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TodoList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TodoList";
 			};
 			name = Debug;
 		};
@@ -486,7 +486,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.forGithubTests;
+				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.todolistapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -494,7 +494,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/forGithub.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/forGithub";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TodoList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TodoList";
 			};
 			name = Release;
 		};
@@ -506,7 +506,7 @@
 				DEVELOPMENT_TEAM = 2NS4V5BBM5;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.forGithubUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.todolistapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -514,7 +514,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = forGithub;
+				TEST_TARGET_NAME = TodoList;
 			};
 			name = Debug;
 		};
@@ -526,7 +526,7 @@
 				DEVELOPMENT_TEAM = 2NS4V5BBM5;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.forGithubUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = top.danielk.todolistapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -534,14 +534,14 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = forGithub;
+				TEST_TARGET_NAME = TodoList;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6558516B2F25D6BA00F47C63 /* Build configuration list for PBXProject "forGithub" */ = {
+		6558516B2F25D6BA00F47C63 /* Build configuration list for PBXProject "TodoList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6558518F2F25D6BC00F47C63 /* Debug */,
@@ -550,7 +550,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		655851912F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "forGithub" */ = {
+		655851912F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "TodoList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				655851922F25D6BC00F47C63 /* Debug */,
@@ -559,7 +559,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		655851942F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "forGithubTests" */ = {
+		655851942F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "TodoListTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				655851952F25D6BC00F47C63 /* Debug */,
@@ -568,7 +568,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		655851972F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "forGithubUITests" */ = {
+		655851972F25D6BC00F47C63 /* Build configuration list for PBXNativeTarget "TodoListUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				655851982F25D6BC00F47C63 /* Debug */,
