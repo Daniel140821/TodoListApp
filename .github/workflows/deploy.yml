@@ -1,0 +1,116 @@
+name: Hybrid Build (Cloud & SideStore)
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: 
+
+jobs:
+  build-all:
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # ========================================================
+      # 1️⃣ 第一阶段：构建模拟器版 (给 Appetize 云预览)
+      # ========================================================
+      - name: Build for Simulator (Appetize)
+        run: |
+          SCHEME_NAME="BookofAnswers"
+          PROJECT_FILE=$(find . -name "*.xcodeproj" -maxdepth 2 | head -n 1)
+          
+          echo "🖥️ 正在构建模拟器版本 (使用通用 SDK)..."
+          
+          # 使用 -sdk iphonesimulator 避免找不到具体设备的问题
+          xcodebuild build \
+            -project "$PROJECT_FILE" \
+            -scheme "$SCHEME_NAME" \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -derivedDataPath build_sim \
+            IPHONEOS_DEPLOYMENT_TARGET=17.0 \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Zip Simulator App
+        run: |
+          # 进入构建产物目录 (注意路径必须匹配 SDK)
+          cd build_sim/Build/Products/Debug-iphonesimulator/
+          
+          # 自动找到 .app 文件
+          APP_NAME=$(find . -name "*.app" -maxdepth 1 -exec basename {} \;)
+          
+          echo "📦 正在打包: $APP_NAME"
+          zip -r ../../../../simulator_app.zip "$APP_NAME"
+
+      - name: Upload to Appetize & Generate Link
+        env:
+          TOKEN: ${{ secrets.APPETIZE_TOKEN }}
+        run: |
+          echo "☁️ 正在上传到 Appetize..."
+          
+          # 检查文件是否存在
+          if [ ! -f "simulator_app.zip" ]; then
+            echo "❌ 错误：找不到 simulator_app.zip"
+            exit 1
+          fi
+
+          response=$(curl -s -X POST https://$TOKEN@api.appetize.io/v1/apps \
+            -F "file=@simulator_app.zip" \
+            -F "platform=ios")
+          
+          # 简单的 JSON 解析 (提取 publicKey)
+          publicKey=$(echo $response | python3 -c "import sys, json; print(json.load(sys.stdin)['publicKey'])")
+          
+          if [ -z "$publicKey" ] || [ "$publicKey" == "null" ]; then
+             echo "❌ 上传失败，Appetize 响应: $response"
+             exit 1
+          fi
+
+          # 生成链接 (使用 iPhone 15 作为显示机型)
+          PREVIEW_URL="https://appetize.io/app/$publicKey?device=iphone15pro&osVersion=17.0&scale=100&orientation=portrait"
+          
+          echo "### ✅ 模拟器预览就绪" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 [**点击在线运行 App**]($PREVIEW_URL)" >> $GITHUB_STEP_SUMMARY
+
+      # ========================================================
+      # 2️⃣ 第二阶段：构建真机版 (给 SideStore 安装)
+      # ========================================================
+      - name: Build for Real Device (SideStore)
+        run: |
+          SCHEME_NAME="BookofAnswers"
+          PROJECT_FILE=$(find . -name "*.xcodeproj" -maxdepth 2 | head -n 1)
+          
+          echo "📱 正在构建真机 IPA..."
+          
+          xcodebuild build \
+            -project "$PROJECT_FILE" \
+            -scheme "$SCHEME_NAME" \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build_real \
+            IPHONEOS_DEPLOYMENT_TARGET=17.0 \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+            
+          # 打包 IPA
+          cd build_real/Build/Products/Release-iphoneos/
+          APP_NAME=$(find . -name "*.app" -maxdepth 1 -exec basename {} \;)
+          
+          mkdir Payload
+          cp -r "$APP_NAME" Payload/
+          zip -r app-unsigned.ipa Payload
+
+      # ========================================================
+      # 3️⃣ 上传 IPA
+      # ========================================================
+      - name: Upload SideStore IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: SideStore-Installable-IPA
+          path: build_real/Build/Products/Release-iphoneos/app-unsigned.ipa
+          retention-days: 5

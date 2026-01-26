@@ -1,0 +1,70 @@
+name: 🛠️ Setup New Project
+
+on:
+  workflow_dispatch:
+    inputs:
+      new_name:
+        description: 'New Name (English Only, No Spaces)'
+        required: true
+        default: 'NewApp'
+      new_bundle_id:
+        description: 'Bundle ID (English Only)'
+        required: true
+        default: 'com.example.app'
+
+jobs:
+  rename-project:
+    runs-on: ubuntu-latest
+    # 彻底删除 permissions 模块，使用默认设置
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Rename and Configure
+        run: |
+          NEW_NAME="${{ inputs.new_name }}"
+          NEW_ID="${{ inputs.new_bundle_id }}"
+          
+          # 1. 精准获取旧名字
+          OLD_NAME=$(find . -maxdepth 1 -name "*.xcodeproj" -exec basename {} .xcodeproj \;)
+          
+          if [ -z "$OLD_NAME" ]; then
+            echo "❌ 严重错误: 找不到 .xcodeproj 文件！"
+            exit 1
+          fi
+
+          echo "✅ 锁定旧项目名为: [$OLD_NAME]"
+          
+          if [ "$OLD_NAME" == "$NEW_NAME" ]; then
+            echo "⚠️ 名字一样，不需要改。"
+            exit 0
+          fi
+
+          # 2. 改文件内容
+          # LC_ALL=C 防止报错
+          LC_ALL=C grep -rIl "$OLD_NAME" . --exclude-dir=.git --exclude-dir=.github | xargs sed -i "s/$OLD_NAME/$NEW_NAME/g"
+          
+          # 3. 改文件夹名字
+          if [ -d "$OLD_NAME" ]; then mv "$OLD_NAME" "$NEW_NAME"; fi
+          if [ -d "$OLD_NAME.xcodeproj" ]; then mv "$OLD_NAME.xcodeproj" "$NEW_NAME.xcodeproj"; fi
+          if [ -d "${OLD_NAME}Tests" ]; then mv "${OLD_NAME}Tests" "${NEW_NAME}Tests"; fi
+          if [ -d "${OLD_NAME}UITests" ]; then mv "${OLD_NAME}UITests" "${NEW_NAME}UITests"; fi
+
+          # 4. 替换 Bundle ID
+          LC_ALL=C grep -rIl "PRODUCT_BUNDLE_IDENTIFIER" . --exclude-dir=.git | xargs sed -i "s/PRODUCT_BUNDLE_IDENTIFIER = .*;/PRODUCT_BUNDLE_IDENTIFIER = $NEW_ID;/g"
+
+      - name: Commit Changes
+        run: |
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "action@github.com"
+          
+          # 🔥【核心大招】🔥
+          # 在提交前，强制把 .github 文件夹还原！
+          # 这样脚本就不会提交对自己文件 (rename.yml) 的任何修改
+          # GitHub 就不会拦截了！
+          git checkout .github
+          
+          git add .
+          git commit -m "🚀 初始化项目: $NEW_NAME"
+          git push
