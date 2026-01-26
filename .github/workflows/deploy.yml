@@ -18,7 +18,7 @@ jobs:
       # ========================================================
       - name: Build for Simulator (Appetize)
         run: |
-          SCHEME_NAME="TodoListApp"
+          SCHEME_NAME="TodoList"
           PROJECT_FILE=$(find . -name "*.xcodeproj" -maxdepth 2 | head -n 1)
           
           echo "🖥️ 正在构建模拟器版本 (使用通用 SDK)..."
@@ -81,7 +81,7 @@ jobs:
       # ========================================================
       - name: Build for Real Device (SideStore)
         run: |
-          SCHEME_NAME="BookofAnswers"
+          SCHEME_NAME="TodoList"
           PROJECT_FILE=$(find . -name "*.xcodeproj" -maxdepth 2 | head -n 1)
           
           echo "📱 正在构建真机 IPA..."
