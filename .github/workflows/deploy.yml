@@ -18,7 +18,7 @@ jobs:
       # ========================================================
       - name: Build for Simulator (Appetize)
         run: |
-          SCHEME_NAME="BookofAnswers"
+          SCHEME_NAME="TodoListApp"
           PROJECT_FILE=$(find . -name "*.xcodeproj" -maxdepth 2 | head -n 1)
           
           echo "🖥️ 正在构建模拟器版本 (使用通用 SDK)..."
