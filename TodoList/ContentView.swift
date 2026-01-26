@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("todoList") private var TodoList : [ToDoItem]=[
-        ToDoItem(title:"Test")
-    ]
+    @AppStorage("todoList") private var TodoList : [ToDoItem]=[ToDoItem(title:"Test")]
     
     var body: some View {
         NavigationStack{
