@@ -27,18 +27,20 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             VStack {
-                List($items) {$items in
-                    HStack{
-                        Text(todo.title)
-                            .strikethrough0(todo.isCompleted)
+                List {
+                    ForEach(items) { item in
+                        HStack{
+                            Text(todo.title)
+                                .strikethrough0(todo.isCompleted)
 
-                        Button("Done!"){
-                            item.isCompleted.toggle()
-                            for index in offsets {
-                                modelContext.delete(items[index]) // 刪除數據
-                            }           
-                        }
-                    }.onDelete(perform: deleteItems)
+                            Button("Done!"){
+                                item.isCompleted.toggle()
+                                for index in offsets {
+                                    modelContext.delete(items[index]) // 刪除數據
+                                }           
+                            }
+                        }.onDelete(perform: deleteItems)
+                    }
                 }
             
             }
