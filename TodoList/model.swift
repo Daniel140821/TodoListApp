@@ -1,11 +1,11 @@
 import Foundation
+import SwiftData
 
-// ToDo 核心模型：带UUID、DoIt标识、待办内容
-struct ToDoItem: Identifiable, Codable {
-    // 唯一标识：UUID，遵循Identifiable后可直接用id，无需额外处理
-    let id: UUID()
-    // 待办内容（可根据需求加其他字段：标题、时间、备注等）
-    let title: String
-    // 可选：待办完成状态（和doIt配合，区分「要做但未做」/「要做且已做」）
-    var isCompleted: Bool = false
+@Model
+final class ToDoItem {
+    // SwiftData 會自動將屬性映射到資料庫欄位
+    var id: UUID()
+    var title: String
+    var isCompleted: Bool
+    var createdAt: Date() // 建議加上時間，方便排序
 }
