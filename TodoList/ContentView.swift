@@ -29,8 +29,8 @@ struct ContentView: View {
             VStack {
                 List {
                     ForEach(items) { item in
-                        Text(todo.title)
-                            .strikethrough0(todo.isCompleted)
+                        Text(item.title)
+                            .strikethrough(toitemdo.isCompleted)
 
                         Button("Done!"){
                             item.isCompleted.toggle()
