@@ -85,13 +85,15 @@ struct ContentView: View {
                         NewTodoItemTitleTextFieldFocus = false
                     }
                 }
-                Button("添加"){
+                Button{
                     modelContext.insert( ToDoItem(title:NewTodoItemTitle) )
 
                     showAddTodoItemSheet = false
+                }label:{
+                    Text("添加")
+                    .frame(maxWidth: .infinity)
+                    .frame(height:200)
                 }
-                .frame(maxWidth: .infinity)
-                .frame(height:200)
                 .disabled(NewTodoItemTitle.isEmpty ? true : false)
                 .buttonStyle(.borderedProminent)
                 .tint(.blue)
