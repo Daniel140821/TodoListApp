@@ -47,6 +47,8 @@ struct ContentView: View {
                             Text(item.title)
                                 .strikethrough(item.isCompleted)
 
+                            Spacer()
+
                             Button("Done!"){
                                 withAnimation(.easeInOut(duration: 1.0)){
                                     item.isCompleted.toggle()
@@ -72,21 +74,31 @@ struct ContentView: View {
                 }
             }
         }.sheet(isPresented: $showAddTodoItemSheet){
-            Form{
-                TextField(
-                    "提醒事項内容",
-                    text: $NewTodoItemTitle
-                )
-                .focused($NewTodoItemTitleTextFieldFocus)
-                .onSubmit{
-                    NewTodoItemTitleTextFieldFocus = false
+            VStack{
+                Form{
+                    TextField(
+                        "提醒事項内容",
+                        text: $NewTodoItemTitle
+                    )
+                    .focused($NewTodoItemTitleTextFieldFocus)
+                    .onSubmit{
+                        NewTodoItemTitleTextFieldFocus = false
+                    }
                 }
-            }
-            Button("添加"){
-                modelContext.insert( ToDoItem(title:NewTodoItemTitle) )
+                Button("添加"){
+                    modelContext.insert( ToDoItem(title:NewTodoItemTitle) )
 
-                showAddTodoItemSheet = false
-            }.disabled(NewTodoItemTitle.isEmpty ? true : false)
+                    showAddTodoItemSheet = false
+                }
+                .disabled(NewTodoItemTitle.isEmpty ? true : false)
+                .frame(maxWidth: .infinity)
+                .frame(height:200)
+                .padding()
+                .buttonStyle(.borderedProminent)
+                .tint(.blue)
+            }
+            .frame(maxWidth: .infinity,maxHeight:.infinity)
+            .background(Color(.systemGroupedBackground))
         }
     }
 }
