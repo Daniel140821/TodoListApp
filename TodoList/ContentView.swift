@@ -73,23 +73,23 @@ struct ContentView: View {
                     }
                 }
             }
-        }
-    }.sheet($showAddTodoItemSheet){
-        Form{
-            TextField(
-                "提醒事項内容",
-                text: $NewTodoItemTitle
-            )
-            .focused($NewTodoItemTitleTextFieldFocus)
-            .onSubmit{
-                NewTodoItemTitleTextFieldFocus = false
+        }.sheet($showAddTodoItemSheet){
+            Form{
+                TextField(
+                    "提醒事項内容",
+                    text: $NewTodoItemTitle
+                )
+                .focused($NewTodoItemTitleTextFieldFocus)
+                .onSubmit{
+                    NewTodoItemTitleTextFieldFocus = false
+                }
             }
-        }
-        Button("添加"){
-            modelContext.insert( ToDoItem(title:NewTodoItemTitle) )
+            Button("添加"){
+                modelContext.insert( ToDoItem(title:NewTodoItemTitle) )
 
-            dismiss()
-        }.disabled(NewTodoItemTitle.isEmpty ? true : false)
+                dismiss()
+            }.disabled(NewTodoItemTitle.isEmpty ? true : false)
+        }
     }
 }
 
