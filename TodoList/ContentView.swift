@@ -74,7 +74,7 @@ struct ContentView: View {
                 }
             }
         }
-    }.sheet(isPresented: $showAddTodoItemSheet){
+    }.sheet($showAddTodoItemSheet){
         Form{
             TextField(
                 "提醒事項内容",
@@ -87,7 +87,7 @@ struct ContentView: View {
         }
         Button("添加"){
             modelContext.insert( ToDoItem(title:NewTodoItemTitle) )
-            
+
             dismiss()
         }.disabled(NewTodoItemTitle.isEmpty ? true : false)
     }
