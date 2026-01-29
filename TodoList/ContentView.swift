@@ -30,7 +30,7 @@ struct ContentView: View {
                 List {
                     ForEach(items) { item in
                         Text(item.title)
-                            .strikethrough(toitemdo.isCompleted)
+                            .strikethrough(item.isCompleted)
 
                         Button("Done!"){
                             item.isCompleted.toggle()
