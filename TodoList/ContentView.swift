@@ -58,10 +58,7 @@ struct ContentView: View {
                             }
                         }
                     }.onDelete(perform: deleteItems)
-                }
-                .frame(maxWidth: .infinity,maxHeight:.infinity)
-                .background(Color(.systemGroupedBackground))
-            
+                }.scrollContentBackground(.hidden)            
             }
             .padding()
             .frame(maxWidth: .infinity,maxHeight:.infinity)
