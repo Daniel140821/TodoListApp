@@ -91,11 +91,12 @@ struct ContentView: View {
                     showAddTodoItemSheet = false
                 }
                 .disabled(NewTodoItemTitle.isEmpty ? true : false)
+                .buttonStyle(.borderedProminent)
+                .tint(.blue)
+                .buttonBorderShape(.capsule)
                 .frame(maxWidth: .infinity)
                 .frame(height:200)
                 .padding()
-                .buttonStyle(.borderedProminent)
-                .tint(.blue)
             }
             .frame(maxWidth: .infinity,maxHeight:.infinity)
             .background(Color(.systemGroupedBackground))
