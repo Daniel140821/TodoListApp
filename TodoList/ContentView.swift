@@ -13,7 +13,7 @@ struct ContentView: View {
     
     // 2. 自動查詢並監聽數據變動
     @Query(sort: \ToDoItem.createdAt, order: .reverse) 
-    @Query private var items: [ToDoItem]
+    private var items: [ToDoItem]
 
 
     func deleteItemByUUID(uuid: UUID) {
