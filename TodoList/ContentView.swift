@@ -73,7 +73,7 @@ struct ContentView: View {
                     }
                 }
             }
-        }.sheet($showAddTodoItemSheet){
+        }.sheet(isPresented: $showAddTodoItemSheet){
             Form{
                 TextField(
                     "提醒事項内容",
