@@ -13,7 +13,7 @@ struct ContentView: View {
     
     // 2. 自動查詢並監聽數據變動
     @Query(sort: \ToDoItem.createdAt, order: .reverse) 
-    private var items: [ToDoItem]
+    @Query private var items: [ToDoItem]
 
 
     func deleteItemByUUID(uuid: UUID) {
@@ -38,7 +38,7 @@ struct ContentView: View {
         NavigationStack{
             VStack {
                 List {
-                    forEach(items) { item in
+                    ForEach(items) { item in
                         Text(item.title)
                             .strikethrough(item.isCompleted)
 
