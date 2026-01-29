@@ -9,12 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.dismiss) private var dismiss
-
     @Environment(\.modelContext) private var modelContext
     @State private var showAddTodoItemSheet :Bool = false
 
-    @State private var NewTodoItemTitle :String?
+    @State private var NewTodoItemTitle :String = ""
     @FocusState private var NewTodoItemTitleTextFieldFocus: Bool
     
     // 2. 自動查詢並監聽數據變動
@@ -87,7 +85,7 @@ struct ContentView: View {
             Button("添加"){
                 modelContext.insert( ToDoItem(title:NewTodoItemTitle) )
 
-                dismiss()
+                showAddTodoItemSheet = false
             }.disabled(NewTodoItemTitle.isEmpty ? true : false)
         }
     }
