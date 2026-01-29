@@ -62,6 +62,8 @@ struct ContentView: View {
             
             }
             .padding()
+            .frame(maxWidth: .infinity,maxHeight:.infinity)
+            .background(Color(.systemGroupedBackground))
             .navigationTitle("Todo List")
             .toolbar {
                 // 這裡放置工具列內容
@@ -91,8 +93,9 @@ struct ContentView: View {
                     showAddTodoItemSheet = false
                 }label:{
                     Text("添加")
-                    .frame(maxWidth: .infinity)
-                    .frame(height:20)
+                        .font(.title.bold())
+                        .frame(maxWidth: .infinity)
+                        .frame(height:40)
                 }
                 .disabled(NewTodoItemTitle.isEmpty ? true : false)
                 .buttonStyle(.borderedProminent)
@@ -103,8 +106,6 @@ struct ContentView: View {
             .frame(maxWidth: .infinity,maxHeight:.infinity)
             .background(Color(.systemGroupedBackground))
         }
-        .frame(maxWidth: .infinity,maxHeight:.infinity)
-        .background(Color(.systemGroupedBackground))
     }
 }
 
