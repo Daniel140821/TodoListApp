@@ -90,12 +90,12 @@ struct ContentView: View {
 
                     showAddTodoItemSheet = false
                 }
+                .frame(maxWidth: .infinity)
+                .frame(height:200)
                 .disabled(NewTodoItemTitle.isEmpty ? true : false)
                 .buttonStyle(.borderedProminent)
                 .tint(.blue)
                 .buttonBorderShape(.capsule)
-                .frame(maxWidth: .infinity)
-                .frame(height:200)
                 .padding()
             }
             .frame(maxWidth: .infinity,maxHeight:.infinity)
