@@ -28,7 +28,7 @@ struct ContentView: View {
         NavigationStack{
             VStack {
                 List {
-                    ForEach(items) { item in
+                    forEach(items) { item in
                         Text(item.title)
                             .strikethrough(item.isCompleted)
 

@@ -13,7 +13,7 @@ struct TodoListApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: self.ToDoItem)
+                .modelContainer(for: ToDoItem.self)
         }
     }
 }
