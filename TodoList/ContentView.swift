@@ -9,7 +9,13 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @Environment(\.dismiss) private var dismiss
+
     @Environment(\.modelContext) private var modelContext
+    @State private var showAddTodoItemSheet :Bool = false
+
+    @State private var NewTodoItemTitle :String?
+    @FocusState private var NewTodoItemTitleTextFieldFocus: Bool
     
     // 2. 自動查詢並監聽數據變動
     @Query(sort: \ToDoItem.createdAt, order: .reverse) 
@@ -39,14 +45,16 @@ struct ContentView: View {
             VStack {
                 List {
                     ForEach(items) { item in
-                        Text(item.title)
-                            .strikethrough(item.isCompleted)
+                        HStack{
+                            Text(item.title)
+                                .strikethrough(item.isCompleted)
 
-                        Button("Done!"){
-                            withAnimation(.easeInOut(duration: 1.0)){
-                                item.isCompleted.toggle()
-                            }completion: {
-                                deleteItemByUUID(uuid:item.id)
+                            Button("Done!"){
+                                withAnimation(.easeInOut(duration: 1.0)){
+                                    item.isCompleted.toggle()
+                                }completion: {
+                                    deleteItemByUUID(uuid:item.id)
+                                }
                             }
                         }
                     }.onDelete(perform: deleteItems)
@@ -59,13 +67,29 @@ struct ContentView: View {
                 // 這裡放置工具列內容
                 ToolbarItem(placement: .primaryAction) { 
                     Button{
-                        modelContext.insert(ToDoItem(title: "新的任務 \(items.count + 1)"))
+                        showAddTodoItemSheet = true
                     }label:{
                         Image(systemName:"plus")
                     }
                 }
             }
         }
+    }.sheet(isPresented: $showAddTodoItemSheet){
+        Form{
+            TextField(
+                "提醒事項内容",
+                text: $NewTodoItemTitle
+            )
+            .focused($NewTodoItemTitleTextFieldFocus)
+            .onSubmit{
+                NewTodoItemTitleTextFieldFocus = false
+            }
+        }
+        Button("添加"){
+            modelContext.insert( ToDoItem(title:NewTodoItemTitle) )
+            
+            dismiss()
+        }.disabled(NewTodoItemTitle.isEmpty ? true : false)
     }
 }
 
