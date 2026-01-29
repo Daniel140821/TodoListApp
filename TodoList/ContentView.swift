@@ -92,7 +92,7 @@ struct ContentView: View {
                 }label:{
                     Text("添加")
                     .frame(maxWidth: .infinity)
-                    .frame(height:200)
+                    .frame(height:20)
                 }
                 .disabled(NewTodoItemTitle.isEmpty ? true : false)
                 .buttonStyle(.borderedProminent)
@@ -103,6 +103,8 @@ struct ContentView: View {
             .frame(maxWidth: .infinity,maxHeight:.infinity)
             .background(Color(.systemGroupedBackground))
         }
+        .frame(maxWidth: .infinity,maxHeight:.infinity)
+        .background(Color(.systemGroupedBackground))
     }
 }
 
